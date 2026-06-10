@@ -1,1 +1,38 @@
+/*Simple circuit  using all logic gates with programs 
+written in structural modelling*/
+/*Structural Modeling is a way of designing digital
+ circuits by connecting logic gates together,
+  just like drawing a circuit diagram.*/
+module all_gates(
+    //inputs
+    input a,
+    input b,
+    //outputs
+    output and_out,
+    output or_out,
+    output not_out,
+    output nand_out,
+    output nor_out,
+    output xor_out,
+    output xnor_out,
+    output buf_out
+);
 
+//AND gate - Output is 1 only when both inputs are 1.
+    and  (and_out,  a, b);
+// OR gate - Output is 1 if at least one input is 1.
+    or   (or_out,   a, b);
+// NOT gate - Inverts input a.
+    not  (not_out,  a);
+// NAND gate - Inverse of AND gate.
+    nand (nand_out, a, b);
+// NOR gate - Inverse of OR gate.
+    nor  (nor_out,  a, b);
+// XOR gate - Output is 1 when inputs are different.
+    xor  (xor_out,  a, b);
+// XNOR gate - Output is 1 when inputs are the same.
+    xnor (xnor_out, a, b);
+// Copies the input directly to the output.
+    buf  (buf_out,  a);
+
+endmodule
