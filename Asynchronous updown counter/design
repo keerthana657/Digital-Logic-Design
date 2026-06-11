@@ -1,0 +1,25 @@
+module async_up_down_counter (
+    input clk,          // Clock input
+    input reset,        // Asynchronous reset (active high)
+    input up_down,      // 1 = Up, 0 = Down
+    output reg [3:0] count
+);
+
+always @(posedge clk or posedge reset) begin
+    if (reset)
+        count <= 4'b0000;       // Reset to 0
+    else if (up_down) begin
+        if (count == 4'b1111)   // If at max (15)
+            count <= 4'b0000;   // Wrap to 0
+        else
+            count <= count + 1; // Count up
+    end
+    else begin
+        if (count == 4'b0000)   // If at 0
+            count <= 4'b1111;   // Wrap to 15
+        else
+            count <= count - 1; // Count down
+    end
+end
+
+endmodule
